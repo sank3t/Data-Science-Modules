@@ -1,12 +1,12 @@
 # Modules for performing descriptive stats
 
 def unique_value_count(df):
-    df_nunique = df.nunique()
+    df_nunique = df.nunique().reset_index()
     df_nunique = df_nunique.rename(
         columns={"index": "columns", 0: "nunique"}
     )
-
-    return df_nunique
+    
+    display(df_nunique)
 
 
 def missing_value_stats(df):
