@@ -1,9 +1,18 @@
-# Modules for performing descriptive stats
+# Modules for performing data cleaning and descriptive stats
+import re
+
+def rename_columns(columns: list):
+    columns = ['_'.join(re.sub('[.-]', '', col).strip().lower().split()) for col in columns]
+    return columns
+
 
 def unique_value_count(df):
     df_nunique = df.nunique().reset_index()
     df_nunique = df_nunique.rename(
-        columns={"index": "columns", 0: "nunique"}
+        columns={
+            "index": "columns", 
+            0: "nunique"
+        }
     )
     
     display(df_nunique)
