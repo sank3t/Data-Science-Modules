@@ -8,10 +8,8 @@ def rename_columns(columns: list):
 
 def unique_value_count(df):
     df_nunique = df.nunique().reset_index()
-    df_nunique = df_nunique.rename(
-        columns={"index": "columns", 0: "nunique"}
-    )
     df_nunique['dtype'] = df.dtypes.reset_index().loc[:, 0]
+    df_nunique.columns = ['column', 'nunique', 'dtype']
     
     display(df_nunique)
 
