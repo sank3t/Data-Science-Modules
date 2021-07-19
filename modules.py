@@ -15,6 +15,9 @@ def unique_value_count(df):
 
 
 def missing_value_stats(df):
+    """
+        Considering the count of NaN points only
+    """
     num_rows = df.shape[0]
     # Missing value count by columns
     df_missing = df.isna().sum().reset_index()
