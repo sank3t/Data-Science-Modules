@@ -1,12 +1,13 @@
 # Modules for performing data cleaning and descriptive stats
 import re
+import pandas as pd
 
 def rename_columns(columns: list):
     columns = ['_'.join(re.sub('[.-]', '_', col).strip().lower().split()) for col in columns]
     return columns
 
 
-def unique_value_count(df):
+def unique_value_count(df: pd.DataFrame):
     df_nunique = df.nunique().reset_index()
     df_nunique['dtype'] = df.dtypes.reset_index().loc[:, 0]
     df_nunique.columns = ['column', 'nunique', 'dtype']
@@ -14,7 +15,7 @@ def unique_value_count(df):
     display(df_nunique)
 
 
-def missing_value_stats(df):
+def missing_value_stats(df: pd.DataFrame):
     """
         Considering the count of NaN points only
     """
@@ -32,6 +33,6 @@ def missing_value_stats(df):
     )
 
     if df_missing.shape[0] > 0:
-        return df_missing
+        display(df_missing)
     else:
         return "The dataset has no NaNs"
