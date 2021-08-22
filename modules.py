@@ -2,7 +2,7 @@
 import re
 
 def rename_columns(columns: list):
-    columns = ['_'.join(re.sub('[.-]', '', col).strip().lower().split()) for col in columns]
+    columns = ['_'.join(re.sub('[.-]', '_', col).strip().lower().split()) for col in columns]
     return columns
 
 
