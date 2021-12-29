@@ -36,3 +36,16 @@ def missing_value_stats(df: pd.DataFrame):
         display(df_missing)
     else:
         return "The dataset has no NaNs"
+
+
+def get_value_counts(
+    df: pd.DataFrame,
+    is_normalized=True
+):
+    """
+        Getting the value counts of columns
+    """
+    for col in df.columns:
+        print(col)
+        print(df[col].value_counts(normalize=is_normalized))
+        print("-"*50)
